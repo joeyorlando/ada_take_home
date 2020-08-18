@@ -12,7 +12,7 @@ cd tests && ./run_tests_in_docker.sh
 
 ## Changelog
 ### v1.0.Joey
-- Migrated SQLite database to PostgreSQL. SQLite `.db` file has been converted into `database.sql`. This decision was made because SQLite lacks alot of regex functions that will make the template substitution much simpler (can simply use `JOINS` on certain regex patterns).
+- Migrated SQLite database to PostgreSQL. SQLite `.db` file has been converted into `database.sql`. This decision was made because SQLite lacks alot of regex functions that will make the template substitution and search functions much simpler
 - Wrote `Dockerfile` for Python based REST-API. Includes a `postgres:11` container which is seeded with above mentioned `.sql` file
 - run Python based API via `docker-compose`
 - configuration is passed in as environment variables (see `config/__init__.py`)
