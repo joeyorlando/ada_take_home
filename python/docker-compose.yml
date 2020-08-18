@@ -1,0 +1,30 @@
+version: "3.5"
+services:
+  postgres:
+    image: "postgres:11"
+    container_name: database
+    environment:
+      - POSTGRES_PASSWORD=ada
+      - POSTGRES_USER=ada
+      - POSTGRES_DB=ada
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database.sql:/docker-entrypoint-initdb.d/init.sql
+  api:
+    image: "ada_api:latest"
+    container_name: api
+    environment:
+      - DATABASE_PROVIDER=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=ada
+      - DATABASE_USER=ada
+      - DATABASE_DB=ada
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    entrypoint: "./wait-for.sh postgres:5432 -- python run.py"
+    volumes:
+      - ./:/opt/apps/api

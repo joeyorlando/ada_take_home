@@ -1,2 +1,4 @@
 #!/bin/sh
-python3 app.py
+
+docker build -t ada_api:latest .
+docker-compose up

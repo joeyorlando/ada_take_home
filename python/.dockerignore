@@ -1,0 +1,9 @@
+__pycache__
+database.sql
+docker-compose.yml
+Dockerfile
+.python-version
+charts
+terraform
+run.sh
+README.md
