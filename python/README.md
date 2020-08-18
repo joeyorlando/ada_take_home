@@ -29,7 +29,7 @@ Below are the steps I would take before I would run this application in producti
 - modify `Message.serialize` method to only make one SQL query in total instead of one query per template in the message body
 - write [Terraform](https://www.terraform.io/) to define the cloud infrastructure resources needed to deploy in production (see notes [below](###infrastructure))
 - write [Helm](https://helm.sh/) charts to deploy our API to our GKE managed k8s cluster. I would deploy a [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to handle automatic scaling of our service.
-- configure New Relic (or similar monitoring service) to monitor traffic/health of the API service
+- configure [New Relic](https://newrelic.com/) (or similar monitoring service) to monitor traffic/health of the API service
 - configure alert notifications to alert dev team should a certain traffic/error threshold be surpassed. Also configure these alerts in GCP on our CloudSQL instance(s).
 - develop a CI/CD pipeline (ex. Github Actions, GCP Cloud Build, CircleCI, etc). Commit (ex. PR merges) to `dev` branch would deploy a staging/development environment. Commits to `master` would deploy to production
 
